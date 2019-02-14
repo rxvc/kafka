@@ -14,6 +14,8 @@ RUN wget http://www-eu.apache.org/dist/kafka/${KAFKA_VERSION}/kafka_${SCALA_VERS
     && mkdir -p /var/lib/${COMPONENT}/data /etc/${COMPONENT}/secrets \
     && chmod -R ag+w /etc/${COMPONENT} /var/lib/${COMPONENT}/data /etc/${COMPONENT}/secrets
 
+ENV KAFKA_HOME=/usr/lib/${COMPONENT}
+ENV PATH=${PATH}:${KAFKA_HOME}/bin
 
 COPY docker/config_templates /etc/${COMPONENT}/docker/config
 COPY docker/scripts /usr/lib/${COMPONENT}/docker/bin/
